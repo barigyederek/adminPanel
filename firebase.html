@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <button id="refresh" >refresh</button>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDF1DlgYZydc30RBGgP5f6JpX9mfFWT3tc",
+          authDomain: "igmmsversion1.firebaseapp.com",
+          databaseURL: "https://igmmsversion1-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "igmmsversion1",
+          storageBucket: "igmmsversion1.appspot.com",
+          messagingSenderId: "33624439551",
+          appId: "1:33624439551:web:65a7fa8a6094040e6deaca",
+          measurementId: "G-77W4F5J71Z"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+// sellect the data i need
+// function refresh() {
+    document.getElementById("refresh").onclick = function () {
+        firebase.database().ref('igmmsversion1-default-rtdb').on('value',function(snapshot){
+        //   var Firstname = snapshot.val().Firstname;
+        //   var Surname = snapshot.val().Surname;
+        //   addItems(Surname, Firstname);
+        console.log(snapshot.val());
+        });
+      }
+// }
+
+// window.onload = selectAllData;
+
+//...............filing the table..............
+function tableData(Surname,Firstname) {
+                var tbody = document.getElementById("tableBody");
+                var trow =document.createElement("tr");
+                var td1 =document.createElement("td");
+                var td2 =document.createElement("td");
+                td1.innerHTML=Surname;
+                td2.innerHTML=Firstname;
+                trow.appendChild(td1);
+                trow.appendChild(td2); 
+                tbody.appendChild(trow); 
+            }
+
+      </script>
+
+
+      
+
+      }
+
+    </body>
+</html>
